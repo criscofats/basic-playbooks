@@ -83,7 +83,7 @@
                         #cloud-config
                         user: "{{ cloudusername }}"
                         password: "{{ cloudpassword }}"
-                        groups: users,wheel
+                        users_groups: users,wheel
                         chpasswd: { expire: False }
                         ssh_pwauth: True
                         ssh_authorized_keys:
