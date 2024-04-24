@@ -9,13 +9,13 @@
         kind: Route
         apiVersion: route.openshift.io/v1
         metadata:
-          name: test
+          name: cody-route
           namespace: openshift-cnv
           labels: {}
         spec:
           to:
             kind: Service
-            name: cody-route
+            name: cody-service
           tls: null
           port:
             targetPort: 80
