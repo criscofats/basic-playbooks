@@ -29,11 +29,6 @@
         state: enabled
       notify: Reload Firewall
 
-  # handlers:
-  #   - name: Reload Firewall
-  #     ansible.builtin.service:
-  #       name: firewalld
-  #       state: reloaded
     
     - name: Install apache
       ansible.builtin.dnf:
