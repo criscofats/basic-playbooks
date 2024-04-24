@@ -11,7 +11,7 @@
         kind: Service
         metadata:
           name: cody-service
-          namespace: openshift-cnv
+          namespace: summit-edu
         spec:
           selector:
             env: cody

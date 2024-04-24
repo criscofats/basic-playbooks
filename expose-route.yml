@@ -10,7 +10,7 @@
         apiVersion: route.openshift.io/v1
         metadata:
           name: cody-route
-          namespace: openshift-cnv
+          namespace: summit-edu
           labels: {}
         spec:
           to:
