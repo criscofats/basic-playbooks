@@ -1,0 +1,21 @@
+- name: Create Service and Route for our Apache Webserver
+  hosts: all
+  tasks:
+
+  - name: Create webapp route
+    kubernetes.core.k8s:
+      state: present
+      definition: 
+        kind: Route
+        apiVersion: route.openshift.io/v1
+        metadata:
+          name: test
+          namespace: openshift-cnv
+          labels: {}
+        spec:
+          to:
+            kind: Service
+            name: cody-route
+          tls: null
+          port:
+            targetPort: 8080
