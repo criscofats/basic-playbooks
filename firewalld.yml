@@ -17,7 +17,7 @@
 
     - name: Allow HTTPS traffic on web servers
       ansible.posix.firewalld:
-        service: https
+        service: http
         permanent: true
         state: enabled
       notify: Reload Firewall
