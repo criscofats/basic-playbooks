@@ -84,8 +84,8 @@
                       userData: |-
                         #cloud-config
                         rh_subscription:
-                          username: "{{ rhsm_username }}"
-                          password: "{{ rhsm_password }}"
+                          activation-key: summit-edu
+                          org: 16317861
                           auto-attach: True
                           service-level: self-support
                         user: "{{ cloudusername }}"
