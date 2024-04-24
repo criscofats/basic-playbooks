@@ -2,37 +2,37 @@
   hosts: all
 
   tasks:
-    - name: Create webapp service
-      kubernetes.core.k8s:
-        state: present
-        definition:
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name: webapp
-            namespace: openshift-cnv
-          spec:
-            selector:
-              env: webapp
-            ports:
-              - protocol: TCP
-                port: 80
-                targetPort: 8080
-
-    - name: Create webapp route
-      kubernetes.core.k8s:
-        state: present
-        definition: 
-          kind: Route
-          apiVersion: route.openshift.io/v1
-          metadata:
-            name: test
-            namespace: openshift-cnv
-            labels: {}
-          spec:
-            to:
-              kind: Service
-              name: webapp
-            tls: null
-            port:
+  - name: Create webapp service
+    kubernetes.core.k8s:
+      state: present
+      definition:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: webapp
+          namespace: openshift-cnv
+        spec:
+          selector:
+            env: webapp
+          ports:
+            - protocol: TCP
+              port: 80
               targetPort: 8080
+
+  - name: Create webapp route
+    kubernetes.core.k8s:
+      state: present
+      definition: 
+        kind: Route
+        apiVersion: route.openshift.io/v1
+        metadata:
+          name: test
+          namespace: openshift-cnv
+          labels: {}
+        spec:
+          to:
+            kind: Service
+            name: webapp
+          tls: null
+          port:
+            targetPort: 8080
