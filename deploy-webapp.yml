@@ -29,6 +29,12 @@
         state: enabled
       notify: Reload Firewall
 
+  handlers:
+    - name: Reload Firewall
+      ansible.builtin.service:
+        name: firewalld
+        state: reloaded
+    
     - name: Install apache
       ansible.builtin.dnf:
         name: httpd
@@ -45,47 +51,3 @@
         src: web.html
         dest: /var/www/html/index.html
         mode: '644'
-
-    - name: Create webapp service
-      kubernetes.core.k8s:
-        state: present
-        definition:
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name: cody-service
-            namespace: summit-edu
-          spec:
-            selector:
-              env: cody
-            ports:
-              - protocol: TCP
-                port: 80
-                targetPort: 80
-
-    - name: Create webapp route
-      kubernetes.core.k8s:
-        state: present
-        definition: 
-          kind: Route
-          apiVersion: route.openshift.io/v1
-          metadata:
-            name: cody-route
-            namespace: summit-edu
-            labels: {}
-          spec:
-            to:
-              kind: Service
-              name: cody-service
-            tls:
-              termination: edge
-              insecureEdgeTerminationPolicy: Redirect
-            wildcardPolicy: None
-            port:
-              targetPort: 80
-
-  handlers:
-    - name: Reload Firewall
-      ansible.builtin.service:
-        name: firewalld
-        state: reloaded
