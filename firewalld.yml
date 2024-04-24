@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-  
+
     - name: Install firewalld
       ansible.builtin.dnf:
         name: firewalld
@@ -20,7 +20,6 @@
         service: https
         permanent: true
         state: enabled
-      when: inventory_hostname in groups['web']
       notify: Reload Firewall
 
   handlers:
