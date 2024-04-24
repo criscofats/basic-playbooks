@@ -36,8 +36,3 @@
             tls: null
             port:
               targetPort: 8080
-
-          
-
-    - name: Create webapp Route
-      
