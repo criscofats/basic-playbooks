@@ -83,21 +83,17 @@
                     cloudInitNoCloud:
                       userData: |-
                         #cloud-config
-                        users:
-                          - name: "{{ cloudusername }}"
-                            password: "{{ cloudpassword }}"
-                            groups: users,wheel
-                            ssh_pwauth: True
-                            ssh_authorized_keys:
-                                - "{{ ssh_authorized_key }}"
-                        chpasswd:
-                          list: |
-                          "{{ cloudusername }}":"{{ cloudpassword }}"
-                        expire: False
                         rh_subscription:
-                          activation-key: summit-edu
-                          org: 16317861
+                          username: "{{ rhsm_username }}"
+                          password: "{{ rhsm_password }}"
                           auto-attach: True
+                          service-level: self-support
+                        user: "{{ cloudusername }}"
+                        password: "{{ cloudpassword }}"
+                        chpasswd: { expire: False }
+                        ssh_pwauth: True
+                        ssh_authorized_keys:
+                            - "{{ ssh_authorized_key }}"
 
   # Normally we could wait for SSH to be up and running, however,
   # we don't know the IP address (or have name resolution) of the VM
