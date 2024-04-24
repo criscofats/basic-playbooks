@@ -83,6 +83,10 @@
                     cloudInitNoCloud:
                       userData: |-
                         #cloud-config
+                        rh_subscription:
+                          activation-key: summit-edu
+                          org: 16317861
+                          auto-attach: True
                         user: "{{ cloudusername }}"
                         password: "{{ cloudpassword }}"
                         chpasswd: { expire: False }
