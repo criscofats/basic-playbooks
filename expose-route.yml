@@ -16,6 +16,9 @@
           to:
             kind: Service
             name: cody-service
-          tls: null
+            tls:
+              termination: edge
+              insecureEdgeTerminationPolicy: Redirect
+            wildcardPolicy: None
           port:
             targetPort: 80
