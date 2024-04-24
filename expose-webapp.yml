@@ -35,7 +35,7 @@
               name: webapp
             tls: null
             port:
-              targetPort: 80
+              targetPort: 8080
 
           
 
