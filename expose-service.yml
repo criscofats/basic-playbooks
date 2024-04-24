@@ -10,7 +10,7 @@
         apiVersion: v1
         kind: Service
         metadata:
-          name: cody
+          name: cody-service
           namespace: openshift-cnv
         spec:
           selector:
