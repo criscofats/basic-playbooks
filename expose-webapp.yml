@@ -1,7 +1,7 @@
 - name: Create Service and Route for our Apache Webserver
   hosts: all
-
   tasks:
+
   - name: Create webapp service
     kubernetes.core.k8s:
       state: present
@@ -9,11 +9,11 @@
         apiVersion: v1
         kind: Service
         metadata:
-          name: webapp
+          name: cody
           namespace: openshift-cnv
         spec:
           selector:
-            env: webapp
+            env: cody
           ports:
             - protocol: TCP
               port: 80
@@ -32,7 +32,7 @@
         spec:
           to:
             kind: Service
-            name: webapp
+            name: cody-route
           tls: null
           port:
             targetPort: 8080
