@@ -9,13 +9,13 @@
         kind: Route
         apiVersion: route.openshift.io/v1
         metadata:
-          name: cody-route
+          name: summit-edu-route
           namespace: summit-edu
           labels: {}
         spec:
           to:
             kind: Service
-            name: cody-service
+            name: summit-edu-service
           tls:
             termination: edge
             insecureEdgeTerminationPolicy: Redirect
